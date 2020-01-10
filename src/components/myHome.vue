@@ -7,23 +7,23 @@
       <van-icon name="arrow" />
     </div>
     <div class="shortcut_box">
-      <div>
+      <div @click="Receivable">
         <img src="../assets/daifk.png" alt="" />
         <span>待收款</span>
       </div>
-      <div>
+      <div @click="fororders">
         <img src="../assets/fuz.png" alt="" />
         <span>待接单</span>
       </div>
-      <div>
+      <div @click="beshipped">
         <img src="../assets/daifh.png" alt="" />
         <span>待发货</span>
       </div>
-      <div>
+      <div @click="bereceived">
         <img src="../assets/daish.png" alt="" />
         <span>待收货</span>
       </div>
-      <div>
+      <div @click="Completed">
         <img src="../assets/wanc.png" alt="" />
         <span>已完成</span>
       </div>
@@ -162,8 +162,25 @@ export default {
   methods:{
     // 去登录事件
     goLogin(){
-      this.$router.push({path:'/'})
-    }
+      this.$router.push({path:'/?typeI=0'})
+    },
+    //待收款事件
+    Receivable(){
+       this.$router.push({path:'/allorder?typeI=0'})
+    },
+    //待接单事件
+    fororders(){
+       this.$router.push({path:'/allorder?typeI=0'})
+    },//待发货事件
+    beshipped(){
+       this.$router.push({path:'/allorder?typeI=2'})
+    },//待收货事件
+    bereceived(){
+       this.$router.push({path:'/allorder?typeI=3'})
+    },//已完成事件
+    Completed(){
+       this.$router.push({path:'/allorder?typeI=0'})
+    },
   }
 };
 </script>
