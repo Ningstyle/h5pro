@@ -37,7 +37,7 @@
         </router-link>
       </div>
       <div>
-        <router-link to="/">
+        <router-link to="/MyAddress">
           <img src="../assets/di.png" alt="" />
           <p>地址管理</p>
           <van-icon name="arrow" />
