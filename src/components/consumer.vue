@@ -3,7 +3,7 @@
     <titles titles='消费币' :isBack='false'></titles>
     <div class='conCentent'>
       <div class='Foutb'>
-        <p class='Foutbp'>总资产</p>
+        <p class='Foutbp'>总资产（币）</p>
         <p style='color:#f5317f'>{{Assets}}</p>
       </div>
       <div class='bonusB'>

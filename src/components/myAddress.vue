@@ -9,37 +9,18 @@
         <ul>
           <li>
             <div class="address-detail">
-              <p class="location">北京市朝阳区朝外大街泛利大厦1602</p>
-              <p class="name-pheon">李泽鑫 15101517777</p>
+              <p class="location">{{ location }}</p>
+              <p class="name-pheon"><span>{{ name }}</span> <span>{{ phone }}</span></p>
             </div>
             <div class="edit-container">
               <div class="default-select">
-                <i class="select"></i>默认地址
+                <i v-bind:class="{ 'select': true, 'no-select': !isDefault }" @click="isDefault = !isDefault"></i>默认地址
               </div>
               <div class="edit-content">
-                <span>
+                <span @click="edit">
                   <i class="edit"></i>编辑
                 </span>
-                <span>
-                  <i class="delete"></i>删除
-                </span>
-              </div>
-            </div>
-          </li>
-          <li>
-            <div class="address-detail">
-              <p class="location">北京市朝阳区朝外大街泛利大厦1602</p>
-              <p class="name-pheon">李泽鑫 15101517777</p>
-            </div>
-            <div class="edit-container">
-              <div class="default-select">
-                <i class="select"></i>默认地址
-              </div>
-              <div class="edit-content">
-                <span>
-                  <i class="edit"></i>编辑
-                </span>
-                <span>
+                <span @click="del">
                   <i class="delete"></i>删除
                 </span>
               </div>
@@ -62,7 +43,11 @@ import titles from "@/components/routePage/title"; // 顶部文字组件
 export default {
   data() {
     return {
+      name: '李泽鑫',
+      phone: '15101517777',
+      location: '北京市朝阳区朝外大街泛利大厦1602',
       hasAddress: true, // 是否有收货地址
+      isDefault: true, // 默认地址
     };
   },
   components: {
@@ -72,7 +57,15 @@ export default {
     // 返回事件
     onClickLeft() {
       this.$router.push("/myhome")
-    }
+    },
+    // 编辑
+    edit() {
+
+    },
+    // 删除
+    del() {
+      alert(1)
+    },
   },
   mounted () {
   }
@@ -152,19 +145,28 @@ export default {
   .edit-container i {
     margin-right: 4px;
     display: inline-block;
-    background: #fff;
   }
   .default-select .select {
     width: 12px;
     height: 12px;
+    background: url(../assets/select.png) no-repeat center;
+    background-size: 100%;
+  }
+  .default-select .no-select {
+    background: url(../assets/no-select.png) no-repeat center;
+    background-size: 100%;
   }
   .edit-content .edit {
     width: 9px;
     height: 9px;
+    background: url(../assets/edit.png) no-repeat center;
+    background-size: 100%;
   }
   .edit-content .delete {
     width: 9px;
     height: 10px;
+    background: url(../assets/delete.png) no-repeat center;
+    background-size: 100%;
   }
   .content li .edit-content {
     color: #f5337f;
