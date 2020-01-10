@@ -5,7 +5,7 @@
   "author": "lining <liningning@ningchy.com>",
   "private": true,
   "scripts": {
-    "serve": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js --host 0.0.0.0",
     "start": "npm run dev",
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "e2e": "node test/e2e/runner.js",
@@ -17,6 +17,8 @@
     "echarts": "^4.6.0",
     "element-ui": "^2.13.0",
     "js-md5": "^0.7.3",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "nprogress": "^0.2.0",
     "vant": "^2.4.1",
     "vue": "^2.5.2",
