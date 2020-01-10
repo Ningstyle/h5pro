@@ -14,7 +14,7 @@ import BankCard from '@/components/BankCard' // 银行卡
 import AddBank from '@/components/addBank' // 添加银行卡
 import Approve from '@/components/approve' // 实名认证
 import ShareCode from '@/components/shareCode' // 二维码海报
-
+import allorder from '@/components/allorder' // 我的订单
 Vue.use(Router)
 
 export default new Router({
@@ -83,6 +83,11 @@ export default new Router({
       path: '/ShareCode',
       name: 'ShareCode',
       component: ShareCode
+    },
+    {
+      path: '/allorder',
+      name: 'allorder',
+      component: allorder
     }
   ]
 })
