@@ -5,14 +5,17 @@ import App from './App'
 import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import './assets/common.css'
 import axios from '../config/axios'
 import md5 from 'js-md5'
-import echarts from 'echarts';
-Vue.prototype.$echarts = echarts;
+import echarts from 'echarts'
+import Vant from 'vant'
+import 'vant/lib/index.css'
+Vue.prototype.$echarts = echarts
 Vue.config.productionTip = false
-Vue.use(ElementUI,axios)
-Vue.prototype.$md5 = md5;
-
+Vue.use(ElementUI, axios)
+Vue.prototype.$md5 = md5
+Vue.use(Vant)
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

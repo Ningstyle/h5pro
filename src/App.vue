@@ -6,16 +6,17 @@
 </template>
 
 <script>
-import Menu from '@/components/routePage/menu'  //底部菜单组件
+import Menu from '@/components/routePage/menu' // 底部菜单组件
 export default {
   name: 'App',
   components:{
     Menu
-  },
+  }
 }
 </script>
 
 <style>
+html,
   body{
     margin:0;
     padding:0;

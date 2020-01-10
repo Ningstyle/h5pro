@@ -63,7 +63,8 @@
       },
       // 注册事件
       register(){
-
+        
+        this.$router.push("/Register");
       }
     }
   }
@@ -122,15 +123,15 @@
     margin-top:15px;
   }
   ::-webkit-input-placeholder { /* WebKit browsers */
-      color:    #FFFFFF;
+    color:    #FFFFFF;
   }
   :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-      color:    #FFFFFF;
+    color:    #FFFFFF;
   }
   ::-moz-placeholder { /* Mozilla Firefox 19+ */
-      color:    #FFFFFF;
+    color:    #FFFFFF;
   }
   :-ms-input-placeholder { /* Internet Explorer 10+ */
-      color:    #FFFFFF;
+    color:    #FFFFFF;
   }
 </style>

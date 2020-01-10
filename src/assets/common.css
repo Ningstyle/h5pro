@@ -1,0 +1,119 @@
+* {
+  -webkit-user-select: none;
+  -ms-touch-select: none;
+  touch-action: pan-y;
+}
+html {
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f5f5f5;
+  margin: 0;
+  padding: 0;
+  /* height: 100%; */
+  font-size: 14px;
+  color: #333;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  font-family: 'PingFang SC';
+}
+p,img{
+  padding:0;
+  margin:0;
+}
+input{
+  background:none;
+  outline:none;
+  border:0px;
+}
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="password"]:focus {
+border: none;
+background: #000222;
+outline: none;
+}
+.color_b{
+  color: #013cb4;
+}
+.color_p {
+  color: #d4237a;
+}
+.color_g{
+  color: #2b2d46;
+}
+.van-nav-bar{
+  background:#000222 !important;
+}
+.van-hairline--bottom::after {
+  border-color:#232540 !important;
+}
+.van-nav-bar .van-icon,
+.van-nav-bar__title{
+  color:#fff !important;
+}
+.van-nav-bar .van-icon{
+  font-size:20px;
+}
+.van-tabs__line{
+  display: none;
+}
+.van-tabs__nav--line{
+  background-color: #2e3049 !important;
+}
+.van-tab{
+  color: #fff !important;
+}
+.van-tab--active{
+  color: #d4237a !important;
+}
+.van-hairline--top-bottom::after, .van-hairline-unset--top-bottom::after{
+  border:none !important;
+}
+.van-dropdown-menu{
+  background-color: #000222 !important;
+  height:40px !important;
+}
+.van-dropdown-menu__item {
+  flex:3 !important;
+}
+.van-dropdown-menu__item .van-dropdown-menu__title{
+  font-size:14px;
+  color: #d4237a !important;
+}
+.van-dropdown-menu__item--disabled {
+  /* text-align: left !important; */
+  flex:1 !important;
+}
+.van-dropdown-menu__item--disabled .van-dropdown-menu__title{
+  color: #013cb4 !important;
+  width:100% !important;
+}
+.van-dropdown-menu__item--disabled .van-dropdown-menu__title::after{
+  display:none;
+}
+.van-dropdown-item{
+  width:100%;
+  padding:15px;
+  padding-top:0px;
+  box-sizing: border-box;
+}
+.van-popup{
+  background-color: rgba(0,0,0,.5) !important;
+}
+.van-cell{
+  background-color: #000222 !important;
+  color: #d4237a !important;
+}
+.van-dropdown-item__option--active, .van-dropdown-item__option--active .van-dropdown-item__icon{
+  color: #d4237a !important;
+}
+.van-cell:not(:last-child)::after{
+  border:none !important;
+}
