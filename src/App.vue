@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" :style="{paddingBottom:paddingBottom}">
     <router-view/>
-    <Menu></Menu>
+    <Menu v-if="ishow"></Menu>
   </div>
 </template>
 
@@ -9,9 +9,29 @@
 import Menu from '@/components/routePage/menu' // 底部菜单组件
 export default {
   name: 'App',
+  data(){
+    return {
+      ishow:false,
+      paddingBottom:0
+    }
+  },
   components:{
     Menu
+  },
+  watch:{
+    '$route.path':function (newVal, oldVal){
+      console.log(newVal)
+      if(newVal=='/'||newVal=='/Register'){
+        this.ishow=false
+        this.paddingBottom=0
+      }else{
+        this.ishow=true
+        this.paddingBottom='80px'
+      }
+    }
+
   }
+
 }
 </script>
 
@@ -26,6 +46,5 @@ html,
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-bottom:80px;
 }
 </style>

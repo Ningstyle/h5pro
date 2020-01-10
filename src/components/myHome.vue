@@ -3,7 +3,7 @@
     <van-nav-bar title="我" />
     <div class="header">
       <img src="../assets/logo.png" alt="" />
-      <p>登录</p>
+      <p @click="goLogin">登录</p>
       <van-icon name="arrow" />
     </div>
     <div class="shortcut_box">
@@ -30,7 +30,7 @@
     </div>
     <div class="skip_box">
       <div>
-        <router-link to="/">
+        <router-link to="/allorder">
           <img src="../assets/dingd.png" alt="" />
           <p>全部订单</p>
           <van-icon name="arrow" />
@@ -158,6 +158,12 @@ export default {
   name: "myHome",
   data() {
     return {};
+  },
+  methods:{
+    // 去登录事件
+    goLogin(){
+      this.$router.push({path:'/'})
+    }
   }
 };
 </script>

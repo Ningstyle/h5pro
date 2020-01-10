@@ -116,6 +116,7 @@
             text-align: center;
             line-height: 30px;
             vertical-align: middle;
+            color: #fff;
           }
           input::-webkit-input-placeholder {
             // text-align: center;

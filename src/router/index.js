@@ -17,6 +17,7 @@ import ShareCode from '@/components/shareCode' // 二维码海报
 
 import MyAddress from '@/components/myAddress' // 我的地址
 import NewAddress from '@/components/newAddress' // 添加地址
+import allorder from '@/components/allorder' // 我的订单
 Vue.use(Router)
 
 export default new Router({
@@ -95,6 +96,11 @@ export default new Router({
       path: '/NewAddress',
       name: 'NewAddress',
       component: NewAddress
+    },
+    {
+      path: '/allorder',
+      name: 'allorder',
+      component: allorder
     }
   ]
 })
