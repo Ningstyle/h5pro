@@ -63,7 +63,7 @@
       },
       // 注册事件
       register(){
-        
+
         this.$router.push("/Register");
       }
     }
