@@ -7,25 +7,30 @@
       <!-- 有收货地址 -->
       <div class="content" v-if="hasAddress">
         <ul>
-          <li>
+          <!-- 循环体开始 -->
+          <li v-for="(item, index) in locations" v-bind:key="index">
             <div class="address-detail">
-              <p class="location">{{ location }}</p>
-              <p class="name-pheon"><span>{{ name }}</span> <span>{{ phone }}</span></p>
+              <p class="location">{{ item.location }}</p>
+              <p class="name-pheon"><span>{{ item.name }}</span> <span>{{ item.phone }}</span></p>
             </div>
             <div class="edit-container">
               <div class="default-select">
-                <i v-bind:class="{ 'select': true, 'no-select': !isDefault }" @click="isDefault = !isDefault"></i>默认地址
+                <i
+                  v-bind:class="{ 'no-select': true, 'select': item.isDefault && index === nowI }"
+                  @click="setDefault(item, index)"
+                ></i>默认地址
               </div>
               <div class="edit-content">
-                <span @click="edit">
-                  <i class="edit"></i>编辑
+                <span @click="edit(item, index)">
+                  <router-link to="/newAddress"><i class="edit"></i>编辑</router-link>
                 </span>
-                <span @click="del">
+                <span @click="del(item, index)">
                   <i class="delete"></i>删除
                 </span>
               </div>
             </div>
           </li>
+          <!-- 循环体结束 -->
         </ul>
       </div>
       <!-- 无收货地址 -->
@@ -41,33 +46,55 @@
 <script>
 import titles from "@/components/routePage/title"; // 顶部文字组件
 export default {
-  data() {
+  data() { // 这是页面数据来源
     return {
-      name: '李泽鑫',
-      phone: '15101517777',
-      location: '北京市朝阳区朝外大街泛利大厦1602',
+      locations: [], // 收货地址列表
       hasAddress: true, // 是否有收货地址
-      isDefault: true, // 默认地址
+      nowI: 0, // 默认收货地址索引
     };
   },
   components: {
     titles
   },
+  mounted () {
+    // 初始化页面调用后取数据方法
+    this.getData();
+  },
   methods: {
+    // 获取数据
+    getData() {
+      // ajax
+      // ...
+      // 这是接口获取到的数据
+      let results = [
+        {name: '小明', phone: '14141414141', location: '山东省青岛市xxxx', isDefault: true},
+        {name: '小红', phone: '15151515151', location: '北京市xxxxxxx', isDefault: false},
+        {name: '小白', phone: '16161616161', location: '厦门市xxxxxxx', isDefault: false},
+      ]
+      // 将数据赋值给页面数据源data
+      this.locations = results;
+    },
+    // 设置默认地址
+    setDefault(item, index) {
+      this.nowI = index; // 设置当前索引
+      for (let i = 0; i < this.locations.length; i++) {
+        this.locations[i].isDefault = false; // 清空其他默认地址
+      }
+      item.isDefault = true; // 当前选择的设置为默认地址
+    },
     // 返回事件
     onClickLeft() {
       this.$router.push("/myhome")
     },
     // 编辑
-    edit() {
-
+    edit(item) {
+      console.log(item);
+      sessionStorage.setItem('editLocation', JSON.stringify(item));
     },
     // 删除
-    del() {
-      alert(1)
+    del(item, index) {
+      this.locations.splice(index, 1);
     },
-  },
-  mounted () {
   }
 };
 </script>
@@ -146,14 +173,14 @@ export default {
     margin-right: 4px;
     display: inline-block;
   }
-  .default-select .select {
+  .default-select .no-select {
     width: 12px;
     height: 12px;
-    background: url(../assets/select.png) no-repeat center;
+    background: url(../assets/no-select.png) no-repeat center;
     background-size: 100%;
   }
-  .default-select .no-select {
-    background: url(../assets/no-select.png) no-repeat center;
+  .default-select .select {
+    background: url(../assets/select.png) no-repeat center;
     background-size: 100%;
   }
   .edit-content .edit {
@@ -170,6 +197,9 @@ export default {
   }
   .content li .edit-content {
     color: #f5337f;
+    a {
+      color: #f5337f;
+    }
   }
   .pink-color {
     color: #f5337f;

@@ -6,18 +6,18 @@
     <div class="container">
       <div class="name">
         <span>收货人：</span>
-        <input type="text" v-model="name">
+        <input type="text" v-model="location.name">
       </div>
       <div class="phone">
         <span>联系电话：</span>
-        <input type="text" v-model="phone">
+        <input type="text" v-model="location.phone">
       </div>
       <div class="location">
         <span>地区：</span>
-        <input type="text" name="" id="" v-model="location">
+        <input type="text" name="" id="" v-model="location.city">
         <span class="select-address">请选择 ></span>
       </div>
-      <textarea class="details-address" name="" id="" cols="30" rows="10" v-model="detailsAddress" placeholder="请填写详细地址，不少于6各自"></textarea>
+      <textarea class="details-address" name="" id="" cols="30" rows="10" v-model="location.details" placeholder="请填写详细地址，不少于6各自"></textarea>
       <div class="set-default">
         <span>设为默认：</span>
         <span v-bind:class="{'switch': true, 'switch-close': isSwitch}" @click="isSwitch = !isSwitch"></span>
@@ -31,28 +31,25 @@ import titles from "@/components/routePage/title"; // 顶部文字组件
 export default {
   data() {
     return {
-      name: '',
-      phone: '',
-      location: '',
-      detailsAddress: '',
+      location: {},
       isSwitch: false,
     };
   },
   components: {
     titles
   },
+  mounted () {
+  },
   methods: {
+    // 保存
+    save() {
+      console.log(this.location);
+    },
     // 返回事件
     onClickLeft() {
       this.$router.push("/myAddress")
     },
-    // 保存
-    save() {
-
-    }
   },
-  mounted () {
-  }
 };
 </script>
 
