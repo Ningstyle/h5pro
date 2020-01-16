@@ -2,7 +2,7 @@
   <div class="myHome">
     <van-nav-bar title="我" />
     <div class="header">
-      <img src="../assets/logo.png" alt="" />
+      <img src="../assets/head.png" alt="" />
       <p @click="goLogin">登录</p>
       <van-icon name="arrow" />
     </div>
@@ -65,9 +65,11 @@
         </router-link>
       </div>
        <div>
-          <img src="../assets/out.png" alt="" />
-          <p>退出</p>
-          <van-icon name="arrow" />
+         <router-link to="/">
+            <img src="../assets/out.png" alt="" />
+            <p>退出</p>
+            <van-icon name="arrow" />
+          </router-link>
       </div>
     </div>
   </div>

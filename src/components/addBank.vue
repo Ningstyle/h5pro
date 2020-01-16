@@ -3,7 +3,7 @@
     <van-nav-bar title="添加银行卡" left-arrow @click-left="onClickLeft" />
     <div class="AddBankBox">
       <p class="hint"></p>
-      <div class="head">
+      <!-- <div class="head">
         <van-dropdown-menu>
           <van-dropdown-item disabled title="开户银行" />
           <van-dropdown-item
@@ -20,6 +20,28 @@
             :options="option2"
           />
         </van-dropdown-menu>
+      </div> -->
+      <div class="content">
+        <div>
+          <span>开户银行</span>
+          <div class="input_box">
+            <input
+              type="text"
+              v-model="FullName"
+              placeholder="请输入您的开户银行"
+            />
+          </div>
+        </div>
+        <div>
+          <span>开户地点</span>
+          <div class="input_box">
+            <input
+              type="text"
+              v-model="FullName"
+              placeholder="请输入您的开户地点"
+            />
+          </div>
+        </div>
       </div>
       <p class="hint"></p>
       <div class="content">

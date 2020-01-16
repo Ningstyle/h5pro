@@ -2,7 +2,16 @@
   <div class="index">
     <titles titles="XFB数字资产联盟" :isBack="false"></titles>
     <div class="imgBox">
-      <img src="../assets/indexbg1.png" alt />
+      <div>
+        <img v-bind:class="{'active-img': nowI === 0}" src="../assets/indexbg1.png" alt />
+        <img v-bind:class="{'active-img': nowI === 1}" src="../assets/indexbg1.png" alt />
+        <img v-bind:class="{'active-img': nowI === 2}" src="../assets/indexbg1.png" alt />
+      </div>
+      <div class="dot">
+        <span v-bind:class="{'active-span': nowI === 0}"></span>
+        <span v-bind:class="{'active-span': nowI === 1}"></span>
+        <span v-bind:class="{'active-span': nowI === 2}"></span>
+      </div>
     </div>
     <div class="centent">
       <div class="leftB">
@@ -61,7 +70,8 @@ export default {
       placeholder: "请输入购买数量",
       isTclass: true,
       buy: "", // 买入、卖出输入框值
-      buy2: "" // 买入、卖出第二个输入框值
+      buy2: "", // 买入、卖出第二个输入框值
+      nowI: 0
     };
   },
   components: {
@@ -160,10 +170,21 @@ export default {
       } else {
         console.log(this.buy, this.buy2)
       }
+    },
+    // 定时器
+    setTime() {
+      let that = this;
+      setInterval(function () {
+        that.nowI ++;
+        if (that.nowI > 2) {
+          that.nowI = 0;
+        }
+      }, 2000)
     }
   },
   mounted () {
-    this.drawLine()
+    this.setTime();
+    this.drawLine();
   }
 };
 </script>
@@ -176,15 +197,48 @@ export default {
   overflow: hidden;
 }
 .imgBox {
+  position: relative;
+  overflow: hidden;
   width: 100%;
-  height: auto;
+  height: 140px;
   display: block;
   margin-top: 50px;
 }
+.imgBox>div:first-child {
+  width: 100%;
+  height: 100%;
+}
+.imgBox>div:last-child {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 6px;
+  left: 50%;
+  z-index: 3;
+  margin-left: -25px;
+  width: 50px;
+  height: 10px;
+}
+.imgBox>div:last-child span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, .5);
+}
+.imgBox>div:last-child .active-span {
+  background-color: #fff;
+}
 .imgBox img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+.imgBox .active-img {
+  z-index: 2;
 }
 .centent {
   width: 100%;

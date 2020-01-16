@@ -8,7 +8,7 @@
     <div class="approve_box">
       <div>
         <span>真实姓名</span>
-        <input type="number" v-model="name" placeholder="请输入真实姓名" />
+        <input type="text" v-model="name" placeholder="请输入真实姓名" />
       </div>
       <div>
         <span>身份证号</span>
