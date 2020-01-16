@@ -27,7 +27,7 @@
           <div class="input_box">
             <input
               type="text"
-              v-model="FullName"
+              v-model="BankName"
               placeholder="请输入您的开户银行"
             />
           </div>
@@ -37,7 +37,7 @@
           <div class="input_box">
             <input
               type="text"
-              v-model="FullName"
+              v-model="BankAddress"
               placeholder="请输入您的开户地点"
             />
           </div>
@@ -192,6 +192,8 @@ export default {
         // 地点列表
         { text: "东湖支行", value: 1 }
       ],
+      BankName: "",
+      BankAddress: "",
       FullName: "",
       card: "",
       name: "",

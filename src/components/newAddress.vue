@@ -15,7 +15,7 @@
       <div class="location">
         <span>地区：</span>
         <input type="text" name="" id="" v-model="location.city">
-        <span class="select-address">请选择 ></span>
+        <!-- <span class="select-address">请选择 ></span> -->
       </div>
       <textarea class="details-address" name="" id="" cols="30" rows="10" v-model="location.details" placeholder="请填写详细地址，不少于6各自"></textarea>
       <div class="set-default">
@@ -92,10 +92,9 @@ export default {
   }
   .location {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     input {
-      width: 250px;
+      width: 280px;
       height: 30px;
     }
     .select-address {
@@ -120,7 +119,7 @@ export default {
     }
   }
   .details-address {
-    width: 355px;
+    width: 95%;
     height: 84px;
     background-color: #000222;
     font-size: 12px;

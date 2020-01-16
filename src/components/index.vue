@@ -200,7 +200,7 @@ export default {
   position: relative;
   overflow: hidden;
   width: 100%;
-  height: 140px;
+  height: auto;
   display: block;
   margin-top: 50px;
 }
@@ -229,16 +229,13 @@ export default {
   background-color: #fff;
 }
 .imgBox img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  display: none;
   width: 100%;
   height: 100%;
   object-fit: contain;
 }
 .imgBox .active-img {
-  z-index: 2;
+  display: block;
 }
 .centent {
   width: 100%;

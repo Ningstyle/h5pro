@@ -23,9 +23,13 @@
             <span class='tj'>推荐奖励</span>
             <span class='time'>时间：{{item.time}}</span>
           </div>
-          <div class='rightLi'>
+          <div v-if="item.isReward" class='rightLi'>
             <span class='money'>{{item.money}}</span>
             <span class='suss'>奖励成功</span>
+          </div>
+          <div v-if="!item.isReward" class='rightLi'>
+            <span class='money'>无</span>
+            <span class='suss'></span>
           </div>
         </li>
       </div>
@@ -44,15 +48,10 @@ export default {
       bonus: '356.2', //分红
       consume: '4321', //消费
       listData: [
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' },
-        { time: '2020-09-12 13:00:00', money: '+100' }
+        { time: '2020-09-12 13:00:00', money: '+100', isReward: true },
+        { time: '2020-09-12 13:00:00', money: '+100', isReward: true },
+        { time: '2020-09-12 13:00:00', money: '+100', isReward: false },
+        { time: '2020-09-12 13:00:00', money: '+100', isReward: false }
       ] // 列表数据
     }
   },
