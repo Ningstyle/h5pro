@@ -99,7 +99,7 @@
         <div>
           应付：<span>￥123.00</span>
         </div>
-        <button class="submit">
+        <button class="submit" @click="getPay">
           提交订单
         </button>
       </div>
@@ -109,10 +109,10 @@
 
 <script>
 import titles from "@/components/routePage/title"; // 顶部文字组件
+import { getConfig, notify } from "@/api/index";
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     titles
@@ -120,173 +120,216 @@ export default {
   methods: {
     // 返回事件
     onClickLeft() {
-      this.$router.push("/myhome")
+      this.$router.push("/myhome");
     },
-
+    getPay() {
+      let params = {
+        id: 1,
+        num: 1
+      };
+      getConfig(params)
+        .then(res => {
+          // 请求成功处理
+          let data = res.data;
+          wx.config({
+            debug: true,
+            appId: "wxfe2a249fe1e4c7e6",
+            timestamp: data.timeStamp,
+            nonceStr: data.nonceStr,
+            signature: data.paySign,
+            jsApiList: ["chooseWXPay"]
+          });
+          wx.ready(function() {
+            chooseWXPay(data);
+          });
+          wx.error(function(res) {
+            console.log(res);
+          });
+        })
+        .catch(res => {
+          //请求失败处理
+          console.log("请求失败");
+        });
+    },
+    chooseWXPay(data) {
+      wx.chooseWXPay({
+        timestamp: data.timeStamp,
+        nonceStr: data.nonceStr,
+        package: data.package,
+        signType: data.signType,
+        paySign: data.paySign,
+        success: function(res) {
+          // 支付成功后的回调函数
+          console.log(res);
+          notify(data).then(res => {
+            console.log(res);
+          });
+        }
+      });
+    }
   },
-  mounted () {
-  }
+  mounted() {}
 };
 </script>
 
 <style  lang="less" scoped>
-  .container {
-    height: calc(100vh - 96px);
-    background-color: #2e3049;
-    .address-container {
-      position: relative;
-      display:flex;
-      margin-bottom: 10px;
-      padding: 0 10px;
-      flex-direction: column;
-      justify-content: center;
-      height: 72px;
-      background-color: #000222;
-      color: #ec2a76;
-      border-bottom: 1px solid #ec2a76;
-      .right-btn {
-        position: absolute;
-        top: 25px;
-        right: 10px;
-      }
+.container {
+  height: calc(100vh - 96px);
+  background-color: #2e3049;
+  .address-container {
+    position: relative;
+    display: flex;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    flex-direction: column;
+    justify-content: center;
+    height: 72px;
+    background-color: #000222;
+    color: #ec2a76;
+    border-bottom: 1px solid #ec2a76;
+    .right-btn {
+      position: absolute;
+      top: 25px;
+      right: 10px;
     }
-    .goods-list {
-      background-color: #000222;
-      padding: 15px 10px 0 10px;
-      >h3 {
-        color: #000fff;
-        margin: 0;
-      }
-      ul {
-        padding-bottom: 15px;
-        li {
-          display: flex;
+  }
+  .goods-list {
+    background-color: #000222;
+    padding: 15px 10px 0 10px;
+    > h3 {
+      color: #000fff;
+      margin: 0;
+    }
+    ul {
+      padding-bottom: 15px;
+      li {
+        display: flex;
+        height: 80px;
+        margin-top: 10px;
+        > img {
+          margin-right: 10px;
+          width: 80px;
           height: 80px;
-          margin-top: 10px;
-          >img {
-            margin-right: 10px;
-            width: 80px;
-            height: 80px;
-            background-color: #fff;
+          background-color: #fff;
+        }
+        > div {
+          flex-grow: 1;
+          h5 {
+            color: #000fff;
           }
-          >div {
-            flex-grow: 1;
-            h5 {
-              color: #000fff;
-            }
-            .price-container {
+          .price-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #ec2a76;
+            .number-edit {
               display: flex;
-              justify-content: space-between;
-              align-items: center;
-              color: #ec2a76;
-              .number-edit {
-                display: flex;
-                width: 90px;
-                height: 27.5px;
-                border: 1px solid #ec2a76;
-                span {
-                  flex-grow: 0;
-                  width: 27px;
-                  height: 100%;
-                  line-height: 27.5px;
+              width: 90px;
+              height: 27.5px;
+              border: 1px solid #ec2a76;
+              span {
+                flex-grow: 0;
+                width: 27px;
+                height: 100%;
+                line-height: 27.5px;
                 text-align: center;
-                }
-                input {
-                  flex-grow: 1;
-                  padding: 0 2px;
-                  width: 32px;
-                  border-left: 1px solid #ec2a76;
-                  border-right: 1px solid #ec2a76;
-                  text-align: center;
-                }
+              }
+              input {
+                flex-grow: 1;
+                padding: 0 2px;
+                width: 32px;
+                border-left: 1px solid #ec2a76;
+                border-right: 1px solid #ec2a76;
+                text-align: center;
               }
             }
           }
         }
       }
     }
-    .order-detals {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 0 10px;
-      margin-top: 10px;
-      height: 100px;
-      background-color: #000222;
-      li {
-        margin: 3px 0;
-        display: flex;
-        justify-content: space-between;
-        div {
-          color: #000fff;
-        }
-        span {
-          color: #ec2a76;
-        }
-      }
-    }
-    .pay-way {
-      margin-top: 10px;
-      padding: 15px 10px;
-      background-color: #000222;
-      margin-bottom: 59px;
-      h1 {
-        font-size: 13px;
-        color: #ec2a76;
-        margin: 0;
-      }
-      ul {
-        margin-top: 20px;
-        li {
-          display: flex;
-          justify-content: space-between;
-          color: #ec2a76;
-          .icon-wx {
-            display: inline-block;
-            vertical-align: middle;
-            margin-right: 5px;
-            width: 20px;
-            height: 18.5px;
-            background: url(../assets/icon-wx.png) no-repeat center;
-            background-size: 100%;
-          }
-          .select {
-            width: 18.5px;
-            height: 18.5px;
-            background: url(../assets/select.png) no-repeat center;
-            background-size: 100%;
-          }
-        }
-      }
-      p {
-        margin-top: 15px;
-        font-size: 10px;
-        color: #bbb;
-      }
-    }
-    .total {
-      position: fixed;
-      bottom: 0;
+  }
+  .order-detals {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 10px;
+    margin-top: 10px;
+    height: 100px;
+    background-color: #000222;
+    li {
+      margin: 3px 0;
       display: flex;
       justify-content: space-between;
-      width: 100%;
-      height: 49px;
-      background-color: #2e3049;
       div {
-        flex-grow: 1;
-        text-align: right;
-        line-height: 49px;
-        margin-right: 10px;
-        color: #ec2a76;
+        color: #000fff;
       }
-      .submit {
-        width: 121px;
-        background-color: #f5317f;
-        color: #fff;
-        font-size: 14px;
-        text-align: center;
-        border: none;
+      span {
+        color: #ec2a76;
       }
     }
   }
+  .pay-way {
+    margin-top: 10px;
+    padding: 15px 10px;
+    background-color: #000222;
+    margin-bottom: 59px;
+    h1 {
+      font-size: 13px;
+      color: #ec2a76;
+      margin: 0;
+    }
+    ul {
+      margin-top: 20px;
+      li {
+        display: flex;
+        justify-content: space-between;
+        color: #ec2a76;
+        .icon-wx {
+          display: inline-block;
+          vertical-align: middle;
+          margin-right: 5px;
+          width: 20px;
+          height: 18.5px;
+          background: url(../assets/icon-wx.png) no-repeat center;
+          background-size: 100%;
+        }
+        .select {
+          width: 18.5px;
+          height: 18.5px;
+          background: url(../assets/select.png) no-repeat center;
+          background-size: 100%;
+        }
+      }
+    }
+    p {
+      margin-top: 15px;
+      font-size: 10px;
+      color: #bbb;
+    }
+  }
+  .total {
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 49px;
+    background-color: #2e3049;
+    div {
+      flex-grow: 1;
+      text-align: right;
+      line-height: 49px;
+      margin-right: 10px;
+      color: #ec2a76;
+    }
+    .submit {
+      width: 121px;
+      background-color: #f5317f;
+      color: #fff;
+      font-size: 14px;
+      text-align: center;
+      border: none;
+    }
+  }
+}
 </style>

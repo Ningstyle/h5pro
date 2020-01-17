@@ -4,7 +4,7 @@
     <div class="header">
       <img src="../assets/head.png" alt="" />
       <p @click="goLogin">登录</p>
-      <van-icon name="arrow" />
+      <!-- <van-icon name="arrow" /> -->
     </div>
     <div class="shortcut_box">
       <div @click="Receivable">
@@ -123,7 +123,7 @@
       img {
         vertical-align: middle;
         display: inline-block;
-        height: 26px;
+        height: 20px;
       }
       p {
         display: inline-block;

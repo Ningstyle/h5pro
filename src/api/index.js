@@ -1,7 +1,8 @@
 import request from '../../config/axios';
 var ENV =process.env.NODE_ENV
 var Tenv;
-ENV=='development'?Tenv='/api':Tenv=''
+Tenv = 'http://219.143.144.250:8081'
+// ENV=='development'?Tenv='/api':Tenv=''
 // 接口封装请求示例
 export const getArticlePage = (pageId,pageIndex,pageSize) => {
   return request({
@@ -14,6 +15,22 @@ export const getArticlePage = (pageId,pageIndex,pageSize) => {
     }
   })
 }
+export const getConfig = (data) => {
+  return request({
+    url: Tenv+'/user/wxpay/pay/',
+    method: 'get',
+    params:data
+  })
+}
+export const notify = (data) => {
+  return request({
+    url: Tenv+'/user/wxpay/notify',
+    method: 'get',
+    params:data
+  })
+}
 export default{
-	getArticlePage,  //输出定义的接口模块
+  getArticlePage,  //输出定义的接口模块
+  getConfig,
+  notify
 }

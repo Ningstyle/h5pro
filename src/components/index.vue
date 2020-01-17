@@ -1,11 +1,11 @@
 <template>
   <div class="index">
-    <titles titles="XFB数字资产联盟" :isBack="false"></titles>
+    <!-- <titles titles="XFB数字资产联盟" :isBack="false"></titles> -->
     <div class="imgBox">
       <div>
-        <img v-bind:class="{'active-img': nowI === 0}" src="../assets/indexbg1.png" alt />
-        <img v-bind:class="{'active-img': nowI === 1}" src="../assets/indexbg1.png" alt />
-        <img v-bind:class="{'active-img': nowI === 2}" src="../assets/indexbg1.png" alt />
+        <img v-bind:class="{'active-img': nowI === 0}" src="../assets/banner1.png" alt @click="getBanner" />
+        <img v-bind:class="{'active-img': nowI === 1}" src="../assets/banner2.png" alt @click="getBanner" />
+        <img v-bind:class="{'active-img': nowI === 2}" src="../assets/banner3.png" alt @click="getBanner" />
       </div>
       <div class="dot">
         <span v-bind:class="{'active-span': nowI === 0}"></span>
@@ -180,6 +180,11 @@ export default {
           that.nowI = 0;
         }
       }, 2000)
+    },
+    getBanner(){
+      this.$router.push({
+        path:'/Commodity'
+      })
     }
   },
   mounted () {
@@ -202,7 +207,7 @@ export default {
   width: 100%;
   height: auto;
   display: block;
-  margin-top: 50px;
+  /* margin-top: 50px; */
 }
 .imgBox>div:first-child {
   width: 100%;
