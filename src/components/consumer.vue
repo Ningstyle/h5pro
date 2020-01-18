@@ -4,7 +4,10 @@
     <div class='conCentent'>
       <div class='Foutb'>
         <p class='Foutbp'>总资产（币）</p>
-        <p style='color:#f5317f'>{{Assets}}</p>
+        <p style='color:#f5317f; font-size: 20px;'>
+          <span>{{Assets}}</span>
+          <router-link style='color:#f5317f; float:right; font-size: 14px;' to="/Embody">提现></router-link>
+          </p>
       </div>
       <div class='bonusB'>
         <div class='lbonus'>

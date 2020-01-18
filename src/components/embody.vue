@@ -150,8 +150,7 @@
       }
       color: #fff;
     }
-    .color_p {
-    }
+    
   }
 }
 .bgc_p {
@@ -197,7 +196,9 @@ export default {
     },
     onClickLeft() {
       // 返回事件
+      this.$router.push("/index")
     }
   }
-};
+}
 </script>
+
