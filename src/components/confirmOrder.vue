@@ -129,6 +129,7 @@ export default {
       };
       getConfig(params)
         .then(res => {
+          alert(res);
           // 请求成功处理
           let data = res.data;
           wx.config({
@@ -140,9 +141,11 @@ export default {
             jsApiList: ["chooseWXPay"]
           });
           wx.ready(function() {
+            alert('支付成功');
             chooseWXPay(data);
           });
           wx.error(function(res) {
+            alert('支付失败')
             console.log(res);
           });
         })

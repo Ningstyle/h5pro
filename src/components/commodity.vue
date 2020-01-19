@@ -58,6 +58,7 @@
       overflow-y: auto;
       .Commodity_box {
         display: flex;
+        justify-content: flex-start;
         .pd10;
         border-bottom: 8px solid #fff;
         .left {
@@ -69,6 +70,7 @@
           }
         }
         .right {
+          flex-grow: 1;
           .color_p {
             font-size: 14px;
             display: -webkit-box;

@@ -59,6 +59,7 @@
           }
         }
         .right {
+          flex-grow: 1;
           .color_p {
             font-size: 14px;
             display: -webkit-box;
