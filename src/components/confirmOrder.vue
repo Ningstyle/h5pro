@@ -142,7 +142,7 @@ export default {
           });
           wx.ready(function() {
             alert('支付成功');
-            chooseWXPay(data);
+            this.chooseWXPay(data);
           });
           wx.error(function(res) {
             alert('支付失败')
