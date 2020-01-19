@@ -1,5 +1,5 @@
 * {
-  -webkit-user-select: none;
+  -webkit-user-select:auto;
   -ms-touch-select: none;
   touch-action: pan-y;
 }
