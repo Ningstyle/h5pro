@@ -117,6 +117,7 @@ export default {
     },
     onClickLeft() {
       // 返回事件
+      this.$router.push('/index')
     }
   }
 };

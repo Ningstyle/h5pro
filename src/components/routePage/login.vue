@@ -30,6 +30,7 @@
           this.$router.push({path:'/index'})  //登录成功跳转到首页
         }).catch(res=>{
           //请求失败处理
+          alert('请求失败');
           console.log('请求失败')
         })
       },
@@ -82,11 +83,12 @@
   .loginBox{
     width:100%;
     height:auto;
+    margin-top: 600px;
     overflow: hidden;
-    position: absolute;
+    /* position: absolute; */
     padding:0 58px;
     box-sizing: border-box;
-    bottom:20%;
+    /* bottom:20%; */
   }
   input{
     width:100%;

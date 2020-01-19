@@ -3,14 +3,14 @@
     <!-- <titles titles="XFB数字资产联盟" :isBack="false"></titles> -->
     <div class="imgBox">
       <div>
-        <img v-bind:class="{'active-img': nowI === 0}" src="../assets/banner1.png" alt @click="getBanner" />
-        <img v-bind:class="{'active-img': nowI === 1}" src="../assets/banner2.png" alt @click="getBanner" />
-        <img v-bind:class="{'active-img': nowI === 2}" src="../assets/banner3.png" alt @click="getBanner" />
+        <img v-bind:class="{'active-img': nowI === 0}" src="../assets/banner2.png" alt @click="getBanner(nowI)" />
+        <img v-bind:class="{'active-img': nowI === 1}" src="../assets/banner3.png" alt @click="getBanner(nowI)" />
+        <!-- <img v-bind:class="{'active-img': nowI === 2}" src="../assets/banner3.png" alt @click="getBanner" /> -->
       </div>
       <div class="dot">
         <span v-bind:class="{'active-span': nowI === 0}"></span>
         <span v-bind:class="{'active-span': nowI === 1}"></span>
-        <span v-bind:class="{'active-span': nowI === 2}"></span>
+        <!-- <span v-bind:class="{'active-span': nowI === 2}"></span> -->
       </div>
     </div>
     <div class="centent">
@@ -176,15 +176,21 @@ export default {
       let that = this;
       setInterval(function () {
         that.nowI ++;
-        if (that.nowI > 2) {
+        if (that.nowI > 1) {
           that.nowI = 0;
         }
       }, 2000)
     },
-    getBanner(){
-      this.$router.push({
-        path:'/Commodity'
-      })
+    getBanner(n){
+      if (n === 0) {
+         this.$router.push({
+          path:'/Conversion'
+        })
+      } else {
+         this.$router.push({
+          path:'/Commodity'
+        })
+      }
     }
   },
   mounted () {
