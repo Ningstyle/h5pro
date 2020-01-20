@@ -312,7 +312,7 @@ export default {
   }
   .total {
     position: fixed;
-    bottom: 0;
+    bottom: 49px;
     display: flex;
     justify-content: space-between;
     width: 100%;

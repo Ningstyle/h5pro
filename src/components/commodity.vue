@@ -63,7 +63,7 @@
         border-bottom: 8px solid #fff;
         .left {
           text-align: left;
-          width: 150px;
+          margin-right: 10px;
           img {
             display: inline-block;
             height: 90px;
