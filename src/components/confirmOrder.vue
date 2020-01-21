@@ -142,7 +142,21 @@ export default {
           });
           wx.ready(function() {
             alert('支付成功');
-            this.chooseWXPay(data);
+            // this.chooseWXPay(data);
+            wx.chooseWXPay({
+              timestamp: data.timeStamp,
+              nonceStr: data.nonceStr,
+              package: data.package,
+              signType: data.signType,
+              paySign: data.paySign,
+              success: function(res) {
+                // 支付成功后的回调函数
+                console.log(res);
+                notify(data).then(res => {
+                  console.log(res);
+                });
+              }
+            });
           });
           wx.error(function(res) {
             alert('支付失败')
