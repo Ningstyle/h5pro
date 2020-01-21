@@ -75,6 +75,6 @@
     text-align: center;
   }
   .tabmenu a span.active{
-    color:#f5337f
+    color:#14D2B8;
   }
 </style>

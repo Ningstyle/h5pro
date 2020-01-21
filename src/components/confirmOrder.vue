@@ -204,12 +204,13 @@ export default {
       margin: 0;
     }
     ul {
-      padding-bottom: 15px;
+      padding: 15px 0;
       li {
         display: flex;
         height: 80px;
         margin-top: 10px;
         > img {
+          flex-shrink: 0;
           margin-right: 10px;
           width: 80px;
           height: 80px;
@@ -217,7 +218,11 @@ export default {
         }
         > div {
           flex-grow: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
           h5 {
+            margin: 10px 0 0 0;
             color: #000fff;
           }
           .price-container {
@@ -312,7 +317,7 @@ export default {
   }
   .total {
     position: fixed;
-    bottom: 49px;
+    bottom: 0;
     display: flex;
     justify-content: space-between;
     width: 100%;

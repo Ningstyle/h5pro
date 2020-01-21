@@ -60,7 +60,7 @@
         display: flex;
         justify-content: flex-start;
         .pd10;
-        border-bottom: 8px solid #fff;
+        border-bottom: 8px solid #2e3049;
         .left {
           text-align: left;
           margin-right: 10px;

@@ -5,12 +5,10 @@
       <div>
         <img v-bind:class="{'active-img': nowI === 0}" src="../assets/banner2.png" alt @click="getBanner(nowI)" />
         <img v-bind:class="{'active-img': nowI === 1}" src="../assets/banner3.png" alt @click="getBanner(nowI)" />
-        <!-- <img v-bind:class="{'active-img': nowI === 2}" src="../assets/banner3.png" alt @click="getBanner" /> -->
       </div>
       <div class="dot">
         <span v-bind:class="{'active-span': nowI === 0}"></span>
         <span v-bind:class="{'active-span': nowI === 1}"></span>
-        <!-- <span v-bind:class="{'active-span': nowI === 2}"></span> -->
       </div>
     </div>
     <div class="centent">
@@ -175,9 +173,10 @@ export default {
     setTime() {
       let that = this;
       setInterval(function () {
-        that.nowI ++;
-        if (that.nowI > 1) {
+        if (that.nowI >= 1) {
           that.nowI = 0;
+        } else {
+          that.nowI ++;
         }
       }, 2000)
     },
@@ -226,8 +225,8 @@ export default {
   bottom: 6px;
   left: 50%;
   z-index: 3;
-  margin-left: -25px;
-  width: 50px;
+  margin-left: -20px;
+  width: 40px;
   height: 10px;
 }
 .imgBox>div:last-child span {
@@ -237,7 +236,7 @@ export default {
   background-color: rgba(255, 255, 255, .5);
 }
 .imgBox>div:last-child .active-span {
-  background-color: #fff;
+  background-color: rgba(20, 210, 184, 1);
 }
 .imgBox img {
   display: none;
